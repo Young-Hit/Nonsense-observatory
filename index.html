@@ -680,8 +680,10 @@
         // --- 宇宙逻辑与 DOM 交互 ---
 
         // --- API 配置 ---
-        const API_KEY = "73575dfea3fe432e9b941fb39ac4e428.1adu73ptJh9yaBNc";
-        const API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions";
+        // API密钥已移至服务器端，现在使用安全的API端点
+        const API_URL = "/api/chat"; // Vercel无服务器函数
+        // 备选方案：使用代理服务
+        // const API_URL = "https://your-proxy-server.com/api/chat";
 
         const chatContainer = document.getElementById('chat');
         const inputField = document.getElementById('userInput');
@@ -863,18 +865,13 @@
         }
 
         async function fetchUniverseResponse(universe, userText) {
-            if (!API_KEY || API_KEY === "YOUR_API_KEY_HERE") {
-                throw new Error("Missing API Key");
-            }
-
+            // 现在调用我们自己的API端点，密钥在服务器端
             const response = await fetch(API_URL, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${API_KEY}`
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    model: "glm-4-flash", // 切换到 Zhipu 的 GLM 模型
                     messages: [
                         { role: "system", content: universe.systemPrompt },
                         { role: "user", content: userText }
