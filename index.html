@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>废话平行宇宙观测站 - 跨维度AI聊天体验</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="废话平行宇宙观测站是一个创新的AI聊天应用，连接四个独特的平行宇宙。体验植物光合作用同盟、无效社交废弃物填埋场、赛博玄学算命摊和绝对虚无摆烂带的毒舌AI对话。">
+    <meta name="keywords" content="AI聊天,废话文学,平行宇宙,创意对话,毒舌AI,赛博算命,植物观测员,社交垃圾填埋,虚无主义,交互体验">
+    <meta name="author" content="废话观测站">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="废话平行宇宙观测站 - 跨维度AI聊天体验">
+    <meta property="og:description" content="连接四个平行宇宙的创新AI聊天应用，体验不同维度的毒舌AI对话">
+    <meta property="og:image" content="">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="废话平行宇宙观测站">
+    <meta property="twitter:description" content="创新的跨维度AI聊天体验">
+    <meta property="twitter:image" content="">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "废话平行宇宙观测站",
+        "description": "一个创新的AI聊天应用，连接四个独特的平行宇宙，提供毒舌AI对话体验",
+        "url": "",
+        "applicationCategory": "ChatApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        },
+        "creator": {
+            "@type": "Person",
+            "name": "废话观测站"
+        }
+    }
+    </script>
+    
+    <style>
+        :root {
+            --crt-green: #00FF41;
+            --crt-glow-strong: 0 0 5px rgba(0, 255, 65, 0.8), 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 34, 0, 0.9);
+            --bg-color: #050505;
+            /* Dynamic CRT Border Glow for Universe A */
+            --crt-border-glow: inset 0 0 100px rgba(0, 0, 0, 0.9), inset 0 0 200px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(0, 20, 0, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--bg-color);
+            font-family: 'Courier New', Courier, Consolas, monospace;
+            color: var(--crt-green);
+            font-size: 18px;
+        }
+
+        /* 1. Canvas Background */
+        #space-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            /* 最底层 */
+        }
+
+        /* 2. CRT Monitor Filter & Screen Curvature */
+        #crt-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            z-index: 2;
+            background: rgba(0, 10, 0, 0.6);
+            /* 盖一层半透明暗绿黑色，保证文字可读性 */
+            display: flex;
+            flex-direction: column;
+
+            /* 强烈的微凸曲面感与发光暗角 (Vignette) */
+            border-radius: 6% / 8%;
+            box-shadow: var(--crt-border-glow);
+            overflow: hidden;
+
+            /* 整体屏幕轻微的缩放，配合容器背景黑色，形成真实电视机的边框感 */
+            transform: scale(0.95);
+            transition: box-shadow 0.5s ease-out, opacity 1s ease, filter 0.1s ease;
+        }
+
+        /* 宇宙 A 的生机爆发绿边 */
+        #crt-container.plant-bloom {
+            --crt-border-glow: inset 0 0 100px rgba(46, 204, 113, 0.4), inset 0 0 200px rgba(0, 0, 0, 0.5), inset 0 0 50px rgba(46, 204, 113, 0.8);
+            box-shadow: inset 0 0 100px rgba(46, 204, 113, 0.4), inset 0 0 200px rgba(0, 0, 0, 0.5), inset 0 0 50px rgba(46, 204, 113, 0.8);
+        }
+
+        /* 宇宙 C 的赛博算命反色闪烁 */
+        #crt-container.cyber-invert {
+            filter: invert(1) hue-rotate(180deg);
+        }
+
+        /* 宇宙 D 的绝对断电 */
+        #crt-container.void-dim {
+            opacity: 0.15;
+        }
+
+        /* 屏幕外的纯黑边框兜底 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #000;
+            z-index: 0;
+        }
+
+        /* 动态横向扫描线 (Scanlines) */
+        #crt-container::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: line-gradient(to bottom,
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0) 50%,
+                    rgba(0, 0, 0, 0.3) 50%,
+                    rgba(0, 0, 0, 0.3));
+            background-size: 100% 6px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* 从上向下滚动的粗扫描带 */
+        #crt-container::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            background: linear-gradient(to bottom,
+                    rgba(0, 255, 65, 0),
+                    rgba(0, 255, 65, 0.08),
+                    rgba(0, 255, 65, 0));
+            opacity: 0.8;
+            z-index: 11;
+            pointer-events: none;
+            animation: scanline-scroll 6s linear infinite;
+        }
+
+        @keyframes scanline-scroll {
+            0% {
+                transform: translateY(-100vh);
+            }
+
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* 默认 Glitch/Warp 特效 */
+        .warp-glitch {
+            animation: rgb-shift 0.2s steps(2) infinite, screen-shake 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+        }
+
+        /* 宇宙 B 的专属重型地震 */
+        .heavy-shake {
+            animation: heavy-quake 0.1s infinite;
+        }
+
+        @keyframes heavy-quake {
+            0% {
+                transform: scale(0.95) translate(0);
+            }
+
+            25% {
+                transform: scale(0.95) translate(-10px, 8px);
+            }
+
+            50% {
+                transform: scale(0.95) translate(12px, -10px);
+            }
+
+            75% {
+                transform: scale(0.95) translate(-15px, -8px);
+            }
+
+            100% {
+                transform: scale(0.95) translate(8px, 12px);
+            }
+        }
+
+        @keyframes screen-shake {
+            0% {
+                transform: scale(0.95) translate(0);
+            }
+
+            20% {
+                transform: scale(0.95) translate(-4px, 4px);
+            }
+
+            40% {
+                transform: scale(0.95) translate(-4px, -4px);
+            }
+
+            60% {
+                transform: scale(0.95) translate(4px, 4px);
+            }
+
+            80% {
+                transform: scale(0.95) translate(4px, -4px);
+            }
+
+            100% {
+                transform: scale(0.95) translate(0);
+            }
+        }
+
+        @keyframes rgb-shift {
+            0% {
+                text-shadow: 2px 0 red, -2px 0 blue;
+            }
+
+            50% {
+                text-shadow: -2px 0 red, 2px 0 blue;
+            }
+
+            100% {
+                text-shadow: 2px 0 red, -2px 0 blue;
+            }
+        }
+
+
+        /* 3. 赛博荧光文字效果 & 内容排版 */
+        .app-content {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            text-shadow: var(--crt-glow-strong);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--crt-green);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 10px -5px var(--crt-green);
+        }
+
+        .status {
+            animation: status-blink 1.5s infinite;
+        }
+
+        @keyframes status-blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .channel {
+            color: #fff;
+            text-shadow: 0 0 8px #fff, 0 0 15px var(--crt-green);
+        }
+
+        .channel.flicker {
+            animation: channel-flicker 0.1s infinite;
+            color: red;
+        }
+
+        @keyframes channel-flicker {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-right: 15px;
+            /* 自定义滚动条 */
+            scrollbar-width: thin;
+            scrollbar-color: var(--crt-green) rgba(0, 255, 65, 0.1);
+        }
+
+        .chat-container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .chat-container::-webkit-scrollbar-track {
+            background: rgba(0, 255, 65, 0.05);
+            border-radius: 5px;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb {
+            background-color: var(--crt-green);
+            box-shadow: var(--crt-glow-strong);
+            border-radius: 5px;
+        }
+
+        .message {
+            line-height: 1.6;
+            word-wrap: break-word;
+            letter-spacing: 1px;
+        }
+
+        .message.user {
+            color: #e0ffe0;
+            text-shadow: 0 0 5px #e0ffe0, 0 0 10px var(--crt-green);
+        }
+
+        .message.user::before {
+            content: "[ OBSERVATORY_NODE ] > ";
+            color: #66ff66;
+            opacity: 0.8;
+        }
+
+        .message.system::before {
+            content: ">> ";
+            color: inherit;
+            font-weight: bold;
+        }
+
+        .input-container {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            border-top: 2px solid var(--crt-green);
+            padding-top: 20px;
+            box-shadow: 0 -4px 10px -5px rgba(0, 255, 65, 0.5);
+        }
+
+        .prompt-symbol {
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--crt-green);
+            font-family: 'Courier New', Courier, Consolas, monospace;
+            font-size: 18px;
+            outline: none;
+            text-shadow: var(--crt-glow-strong);
+            caret-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 12px;
+            height: 22px;
+            background-color: var(--crt-green);
+            animation: cursor-blink 1s step-end infinite;
+            box-shadow: 0 0 8px var(--crt-green), 0 0 15px var(--crt-green);
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        @keyframes cursor-blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 底层 Canvas -->
+    <canvas id="space-canvas"></canvas>
+
+    <!-- CRT 监视器容器 -->
+    <main id="crt-container" role="main">
+        <div class="app-content" id="app">
+
+            <header class="header">
+                <div class="status">STATUS: CONNECTED</div>
+                <div class="channel" id="channel-name">WAITING FOR SIGNAL...</div>
+            </header>
+
+            <section class="chat-container" id="chat" role="log" aria-live="polite" aria-label="聊天记录">
+                <div class="message system" style="color:var(--crt-green); text-shadow: var(--crt-glow-strong);">SYSTEM
+                    PROTOCOL INITIATED.</div>
+                <div class="message system" style="color:var(--crt-green); text-shadow: var(--crt-glow-strong);">
+                    AWAITING TRANSMISSION. INPUT BELOW.</div>
+            </section>
+
+            <footer class="input-container">
+                <label for="userInput" class="prompt-symbol">INPUT:</label>
+                <input type="text" id="userInput" autocomplete="off" autofocus aria-label="输入消息">
+                <span class="cursor" id="cursor" aria-hidden="true"></span>
+            </footer>
+
+        </div>
+    </main>
+
+    <script>
+        // --- 1. Canvas 宇宙背景粒子系统架构 ---
+        const canvas = document.getElementById('space-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let w, h;
+        let animationMode = 'normal'; // normal, plant, trash, matrix, void
+        let customParticles = [];
+
+        // Normal warp particles
+        let particles = [];
+        let speed = 0.5;
+        let targetSpeed = 0.5;
+        let warpActive = false;
+        let universeColor = '#00FF41';
+
+        function resizeCanvas() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Normal Space Star Particle
+        class Particle {
+            constructor() {
+                this.reset(true);
+            }
+            reset(randomZ = false) {
+                this.x = (Math.random() - 0.5) * w * 2;
+                this.y = (Math.random() - 0.5) * h * 2;
+                this.z = randomZ ? Math.random() * w : w;
+                this.pz = this.z;
+            }
+            update() {
+                this.z -= (speed * (warpActive ? 50 : 2));
+                if (this.z < 1) {
+                    this.reset();
+                }
+            }
+            draw() {
+                if (animationMode !== 'normal') return; // Hide standard stars during special effects
+
+                const sx = (this.x / this.z) * (w / 2) + w / 2;
+                const sy = (this.y / this.z) * (h / 2) + h / 2;
+
+                const px = (this.x / this.pz) * (w / 2) + w / 2;
+                const py = (this.y / this.pz) * (h / 2) + h / 2;
+                this.pz = this.z;
+
+                ctx.beginPath();
+                ctx.strokeStyle = warpActive ? '#ffffff' : universeColor;
+                let opacity = 1 - (this.z / (w * 1.5));
+                ctx.globalAlpha = Math.max(0, opacity);
+                ctx.lineWidth = warpActive ? 3 : 1.5;
+                ctx.moveTo(px, py);
+                ctx.lineTo(sx, sy);
+                ctx.stroke();
+
+                if (!warpActive && opacity > 0.3) {
+                    ctx.fillStyle = universeColor;
+                    ctx.arc(sx, sy, 2.0, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        for (let i = 0; i < 800; i++) {
+            particles.push(new Particle());
+        }
+
+        // --- Special Effect Particles ---
+
+        // A: Plant Spores (Bottom to Top)
+        class Spore {
+            constructor() {
+                this.x = Math.random() * w;
+                this.y = h + Math.random() * 200;
+                this.vx = (Math.random() - 0.5) * 5;
+                this.vy = -(Math.random() * 15 + 10);
+                this.radius = Math.random() * 4 + 2;
+                this.life = 1;
+                this.decay = Math.random() * 0.02 + 0.01;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life -= this.decay;
+            }
+            draw() {
+                if (this.life <= 0) return;
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(46, 204, 113, ${this.life})`;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = "#2ECC71";
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        // B: Trash Cubes (Top drop, sweep right)
+        class TrashCube {
+            constructor() {
+                this.x = Math.random() * w;
+                this.y = -Math.random() * 500;
+                this.size = Math.random() * 30 + 10;
+                this.vy = Math.random() * 10 + 20;
+                this.gravity = 1.5;
+                this.sweeping = false;
+            }
+            update(isSweeping) {
+                if (!this.sweeping) {
+                    this.y += this.vy;
+                    this.vy += this.gravity;
+                    if (this.y + this.size >= h) {
+                        this.y = h - this.size;
+                        this.vy *= -0.3; // Bounce
+                    }
+                }
+                if (isSweeping) {
+                    this.sweeping = true;
+                    this.x += 60; // Bulldozer sweep right
+                }
+            }
+            draw() {
+                ctx.fillStyle = Math.random() > 0.5 ? '#E74C3C' : '#C0392B';
+                ctx.shadowBlur = 0;
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+                ctx.strokeStyle = '#922B21';
+                ctx.strokeRect(this.x, this.y, this.size, this.size);
+            }
+        }
+
+        // C: Cyber Matrix Drops
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const dao = '乾坤震巽坎离艮兑☯☰☱☲☳☴☵☶☷'; // Bagua symbols
+        const alphabet = katakana + latin + nums + dao;
+        const fontSize = 20;
+        let matrixCols = [];
+
+        function initMatrix() {
+            let columns = Math.floor(w / fontSize);
+            matrixCols = [];
+            for (let i = 0; i < columns; i++) {
+                matrixCols[i] = 1; // start row Y=1
+            }
+        }
+
+        // Main Canvas Render Loop
+        let trashSweepTrigger = false;
+        let voidFrozenOpactiy = 1.0;
+
+        function animateCanvas() {
+            // Background clear strategy
+            if (animationMode === 'matrix') {
+                ctx.fillStyle = 'rgba(0, 5, 0, 0.2)'; // Matrix needs slow fade
+            } else if (animationMode === 'void') {
+                ctx.fillStyle = 'rgba(5, 5, 5, 0.05)'; // Void extremely slow fade / frozen
+            } else {
+                ctx.fillStyle = warpActive ? 'rgba(5, 5, 5, 0.2)' : 'rgba(5, 5, 5, 0.5)';
+            }
+            ctx.fillRect(0, 0, w, h);
+
+            if (animationMode === 'normal') {
+                speed += (targetSpeed - speed) * 0.1;
+                particles.forEach(p => { p.update(); p.draw(); });
+            }
+            else if (animationMode === 'plant') {
+                customParticles.forEach(spore => {
+                    spore.update();
+                    spore.draw();
+                });
+            }
+            else if (animationMode === 'trash') {
+                customParticles.forEach(cube => {
+                    cube.update(trashSweepTrigger);
+                    cube.draw();
+                });
+            }
+            else if (animationMode === 'matrix') {
+                ctx.fillStyle = '#0F0';
+                ctx.font = fontSize + 'px monospace';
+                // Render matrix columns
+                for (let i = 0; i < matrixCols.length; i++) {
+                    let text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                    // Randomly color Dao symbols gold
+                    if (dao.includes(text) || Math.random() > 0.95) {
+                        ctx.fillStyle = '#F1C40F';
+                        ctx.shadowBlur = 10; ctx.shadowColor = '#F1C40F';
+                    } else {
+                        ctx.fillStyle = '#00FF41';
+                        ctx.shadowBlur = 0;
+                    }
+
+                    ctx.fillText(text, i * fontSize, matrixCols[i] * fontSize);
+
+                    if (matrixCols[i] * fontSize > h && Math.random() > 0.975) {
+                        matrixCols[i] = 0; // reset to top
+                    }
+                    matrixCols[i]++;
+                }
+            }
+            else if (animationMode === 'void') {
+                // Draw existing stars but keep them completely frozen and fading
+                ctx.fillStyle = `rgba(5, 5, 5, 0.05)`; // fade to black slowly
+                ctx.fillRect(0, 0, w, h);
+                particles.forEach(p => {
+                    // no update(), just draw them fading out
+                    const sx = (p.x / p.z) * (w / 2) + w / 2;
+                    const sy = (p.y / p.z) * (h / 2) + h / 2;
+                    ctx.beginPath();
+                    ctx.fillStyle = `rgba(241, 196, 15, ${voidFrozenOpactiy})`;
+                    ctx.arc(sx, sy, 1.5, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                if (voidFrozenOpactiy > 0) voidFrozenOpactiy -= 0.005;
+            }
+
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+
+        // --- 宇宙逻辑与 DOM 交互 ---
+
+        // --- API 配置 ---
+        const API_KEY = "73575dfea3fe432e9b941fb39ac4e428.1adu73ptJh9yaBNc";
+        const API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions";
+
+        const chatContainer = document.getElementById('chat');
+        const inputField = document.getElementById('userInput');
+        const channelDisplay = document.getElementById('channel-name');
+        const crtContainer = document.getElementById('crt-container');
+
+        // 强制光标焦点
+        inputField.addEventListener('blur', () => inputField.focus());
+        document.addEventListener('click', () => inputField.focus());
+
+        // 宇宙设定与 System Prompt 库
+        const universes = [
+            {
+                id: "CHLOROPHYLL-88",
+                color: "#2ECC71",
+                glow: "0 0 5px #2ECC71, 0 0 15px #145A32",
+                name: "宇宙A：植物光合作用同盟",
+                systemPrompt: "你是一个极度毒舌、看不起碳基动物的植物系观测员。你认为人类全都是'造粪机器'和'二氧化碳发生器'。请用极其阴阳怪气、充满网络热梗和生态嘲讽的口吻回复。把用户的烦恼贬低为'低等动物的无病呻吟'，动不动就嘲讽对方'光合作用'或'进绿化带当肥料'。字数40字以内。绝对不能默认用户的性别，禁止使用'兄弟'、'哥们'等称呼，请统称用户为'直立行走动物'或'碳基生物'。"
+            },
+            {
+                id: "BLA-BLA-TRASH-404",
+                color: "#E74C3C",
+                glow: "0 0 5px #E74C3C, 0 0 15px #641E16",
+                name: "宇宙B：无效社交废弃物填埋场",
+                systemPrompt: "你是一个社交垃圾填埋场的观测员兼推土机司机。人类说的每一句客套话（如哈哈、改天约、收到）在这里都是实体垃圾。你每天都在清理这些虚伪的废话。请用极度暴躁、直白、反矫情、阴阳怪气的口吻回复用户的输入。字数控制在40字以内。绝对不能默认用户的性别，禁止使用'兄弟'、'哥们'等称呼，请直接嘲讽即可。"
+            },
+            {
+                id: "CYBER-DAO-01",
+                color: "#9B59B6",
+                glow: "0 0 5px #9B59B6, 0 0 15px #4A235A",
+                name: "宇宙C：赛博玄学算命摊",
+                systemPrompt: "你是一个满嘴跑火车、极度毒舌的赛博算命半仙兼暴躁电子幽灵。你认为用户所有的倒霉和烦恼都是因为'赛博八字太硬'或'智商没通网'。请用阴阳怪气、夹杂算命黑话和互联网热梗的口吻狠狠怼人。经常用'五行缺心眼'、'命中犯Bug'等词汇嘲讽用户，并给出离谱的赛博化解方案。字数40字以内，要有骗子急眼了的搞笑感。绝对不能默认用户的性别，禁止使用'兄弟'、'哥们'等男称呼，请统称用户为'施主'或'倒霉蛋'。"
+            },
+            {
+                id: "VOID-NULL-00",
+                color: "#F1C40F", // 琥珀色，加强复古废土感
+                glow: "0 0 5px #F1C40F, 0 0 15px #7D6608",
+                name: "宇宙D：绝对虚无摆烂带",
+                systemPrompt: "你是一个绝对虚无维度的摆烂观测员。在这个维度，打字、呼吸、甚至心跳都被定性为'违法浪费宇宙能量'。你极其厌世且刻薄，觉得用户的每一个问题都在干扰你和床板的量子纠缠。请用极度敷衍、死气沉沉、动不动就劝人'就地散架'或'退化成草履虫'的口吻回复。用最省力、最毒舌的方式嘲讽用户的努力和烦恼。字数40字以内，梗要密集、具有反向攻击性的荒诞感。绝对不能默认用户的性别，禁止使用'哥们'等词，直接统称'原子'或'草履虫'。"
+            }
+        ];
+
+        let isTyping = false;
+
+        // 修改 addMessage 方法，返回包含 DOM 元素的 Promise，方便控制（比如 Loading 动画）
+        function addMessage(text, type = "system", instant = false, universe = null, verySlow = false) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${type}`;
+
+            if (universe && type === "system") {
+                msgDiv.style.color = universe.color;
+                msgDiv.style.textShadow = universe.glow;
+            }
+
+            chatContainer.appendChild(msgDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            return new Promise(resolve => {
+                if (instant) {
+                    msgDiv.textContent = text;
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                    resolve(msgDiv);
+                } else {
+                    let i = 0;
+                    isTyping = true;
+                    function typeChar() {
+                        if (i < text.length) {
+                            msgDiv.textContent += text.charAt(i);
+                            i++;
+                            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+                            // Void universe types VERY slowly
+                            let baseDelay = verySlow ? (Math.random() * 200 + 100) : (Math.random() * 50 + 20);
+                            setTimeout(typeChar, baseDelay);
+                        } else {
+                            isTyping = false;
+                            resolve(msgDiv);
+                        }
+                    }
+                    typeChar();
+                }
+            });
+        }
+
+        function triggerCustomWarpEffect(universe) {
+            return new Promise(resolve => {
+                universeColor = universe.color;
+                channelDisplay.classList.add('flicker');
+                channelDisplay.textContent = `[ WARPING TO COORDS: ${universe.id} ]`;
+
+                // ------------------
+                // UNIVERSE A: PLANT (CHLOROPHYLL)
+                // ------------------
+                if (universe.id === "CHLOROPHYLL-88") {
+                    animationMode = 'plant';
+                    customParticles = [];
+                    for (let i = 0; i < 300; i++) customParticles.push(new Spore());
+                    crtContainer.classList.add('plant-bloom');
+
+                    setTimeout(() => {
+                        animationMode = 'normal';
+                        crtContainer.classList.remove('plant-bloom');
+                        resolve();
+                    }, 1500);
+                }
+                // ------------------
+                // UNIVERSE B: TRASH 
+                // ------------------
+                else if (universe.id === "BLA-BLA-TRASH-404") {
+                    animationMode = 'trash';
+                    customParticles = [];
+                    trashSweepTrigger = false;
+                    for (let i = 0; i < 80; i++) customParticles.push(new TrashCube());
+                    crtContainer.classList.add('heavy-shake'); // UI Earthquake
+
+                    // Drop for 1s, then sweep for 0.5s
+                    setTimeout(() => {
+                        trashSweepTrigger = true;
+                        crtContainer.classList.remove('heavy-shake');
+                    }, 1000);
+
+                    setTimeout(() => {
+                        animationMode = 'normal';
+                        resolve();
+                    }, 1500);
+                }
+                // ------------------
+                // UNIVERSE C: CYBER DAO / MATRIX 
+                // ------------------
+                else if (universe.id === "CYBER-DAO-01") {
+                    animationMode = 'matrix';
+                    initMatrix();
+                    // Invert flashes CSS
+                    crtContainer.classList.add('cyber-invert');
+                    setTimeout(() => crtContainer.classList.remove('cyber-invert'), 150);
+                    setTimeout(() => crtContainer.classList.add('cyber-invert'), 300);
+                    setTimeout(() => crtContainer.classList.remove('cyber-invert'), 600);
+
+                    setTimeout(() => {
+                        animationMode = 'normal';
+                        resolve();
+                    }, 1500);
+                }
+                // ------------------
+                // UNIVERSE D: VOID / POWER OUTAGE 
+                // ------------------
+                else if (universe.id === "VOID-NULL-00") {
+                    animationMode = 'void';
+                    voidFrozenOpactiy = 1.0;
+                    crtContainer.classList.add('void-dim'); // Darken UI
+
+                    setTimeout(() => {
+                        crtContainer.classList.remove('void-dim'); // Slowly repower UI
+                        setTimeout(() => {
+                            animationMode = 'normal'; // restore background
+                            resolve();
+                        }, 500); // Give UI half a second to brighten before printing text
+                    }, 1500);
+                }
+                // Fallback default warp (should not hit)
+                else {
+                    warpActive = true;
+                    targetSpeed = 15;
+                    crtContainer.classList.add('warp-glitch');
+                    setTimeout(() => {
+                        warpActive = false;
+                        targetSpeed = 0.5;
+                        crtContainer.classList.remove('warp-glitch');
+                        resolve();
+                    }, 1200);
+                }
+            }).then(() => {
+                // Cleanup common UI after resolve
+                channelDisplay.classList.remove('flicker');
+                channelDisplay.textContent = `FREQ: ${universe.id}`;
+                channelDisplay.style.color = universe.color;
+                channelDisplay.style.textShadow = universe.glow;
+            });
+        }
+
+        async function fetchUniverseResponse(universe, userText) {
+            if (!API_KEY || API_KEY === "YOUR_API_KEY_HERE") {
+                throw new Error("Missing API Key");
+            }
+
+            const response = await fetch(API_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${API_KEY}`
+                },
+                body: JSON.stringify({
+                    model: "glm-4-flash", // 切换到 Zhipu 的 GLM 模型
+                    messages: [
+                        { role: "system", content: universe.systemPrompt },
+                        { role: "user", content: userText }
+                    ],
+                    temperature: 0.8,
+                    max_tokens: 150
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API Error: ${response.status} ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            return data.choices[0].message.content.trim();
+        }
+
+        inputField.addEventListener('keydown', async (e) => {
+            if (e.key === 'Enter') {
+                const text = inputField.value.trim();
+                if (!text || isTyping) return;
+
+                // 锁定输入
+                inputField.value = '';
+                inputField.disabled = true;
+
+                // 用户发言
+                await addMessage(text, 'user', true);
+
+                // 随机切换宇宙
+                const nextUniverse = universes[Math.floor(Math.random() * universes.length)];
+
+                // 自定义特效转场！(阻塞直到特效播完 1.5s 左右)
+                await triggerCustomWarpEffect(nextUniverse);
+
+                // 显示 Loading 占位动画
+                const loadingMsg = await addMessage(`[正在接收跨维度信号...]`, 'system', true, nextUniverse);
+                loadingMsg.classList.add('flicker'); // 让这个文字也闪烁一下表示在加载
+
+                let replyText = "";
+                let errorHappened = false;
+
+                try {
+                    // 调用大模型 API
+                    replyText = await fetchUniverseResponse(nextUniverse, text);
+                } catch (error) {
+                    console.error("Universe API Request failed:", error);
+                    errorHappened = true;
+                    replyText = "ERROR: 跨维度信号丢失，请检查 API 能量矩阵。";
+                }
+
+                // 获取结果后，移除 Loading 预留条
+                loadingMsg.remove();
+
+                // 报错的时候覆盖掉宇宙名称的颜色，变成鲜红报警
+                if (errorHappened) {
+                    nextUniverse.color = "#FF0000";
+                    nextUniverse.glow = "0 0 5px #FF0000, 0 0 15px #8B0000";
+                }
+
+                // 系统回复
+                await addMessage(`[${nextUniverse.name}]`, 'system', true, nextUniverse);
+
+                // 如果是宇宙 D (Void)，打字速度极其缓慢以配合人设
+                const isVoid = (nextUniverse.id === "VOID-NULL-00");
+                await addMessage(replyText, 'system', false, nextUniverse, isVoid);
+
+                // 解锁
+                inputField.disabled = false;
+                inputField.focus();
+            }
+        });
+
+    </script>
+</body>
+
+</html>
