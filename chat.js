@@ -32,14 +32,28 @@ export default async function handler(req, res) {
         });
         
         if (!response.ok) {
-            throw new Error(`API Error: ${response.status}`);
+            const errorData = await response.json().catch(() => ({}));
+            console.error('API Response Error:', {
+                status: response.status,
+                statusText: response.statusText,
+                error: errorData
+            });
+            throw new Error(`API Error: ${response.status} ${response.statusText}`);
         }
         
         const data = await response.json();
         res.status(200).json(data);
         
     } catch (error) {
-        console.error('API Error:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        console.error('Full Error Details:', {
+            message: error.message,
+            stack: error.stack,
+            apiKeyExists: !!API_KEY,
+            apiKeyLength: API_KEY ? API_KEY.length : 0
+        });
+        res.status(500).json({ 
+            error: 'Internal server error',
+            details: error.message 
+        });
     }
 }
